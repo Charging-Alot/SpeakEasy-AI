@@ -1,0 +1,56 @@
+
+# BASICS
+PROMPT: hello .
+PROMPT: how are you ?
+PROMPT: what is your name ?
+PROMPT: what's your name ?
+PROMPT: what is your favorite color ?
+PROMPT: what's your favorite color ?
+PROMPT: you're a machine .  
+PROMPT: you are a machine .
+PROMPT: tell me a story .
+
+# QUOTES FROM NOVELS
+PROMPT: it was the best of times , it was the worst of times . 
+PROMPT: and so we beat on , boats against the current , borne back ceaselessly into the past .
+PROMPT: it is a truth universally that a single man in possession of a good fortune must be in want of a wife .
+PROMPT: christmas won ' t be christmas without any presents !
+PROMPT: everything was beautiful and nothing hurt . 
+PROMPT: what fresh hell is this ?
+PROMPT: frankly my dear , I don ' t give a damn . 
+PROMPT: let the wild rumpus start !
+PROMPT: and the rest is rust and stardust . 
+PROMPT: I solemnly swear that I am up to no good .
+
+# PROVERBS
+PROMPT: the pen is mightier than the sword .
+PROMPT: when in rome, do as the romans do .
+PROMPT: no man is an island . 
+PROMPT: fortune favors the bold . 
+PROMPT: people who live in glass houses should not throw stones .
+PROMPT: hope for the best , but prepare for the worst . 
+PROMPT: better late than never .
+PROMPT: there ' s no such thing as a free lunch .
+PROMPT: a watched pot never boils . 
+
+# TRAINING SAMPLES
+PROMPT : half of reddit is on mobile , chill your bones .
+EXPECTED_RESPONSE : in that case though it would auto go to mobile anyways so this is indeed the best format to post in .
+PROMPT : the comments in that thread are hilarious .
+EXPECTED_RESPONSE : polarized as fuck .
+PROMPT : I feel like the hair near the business end of those tails would get pretty gnarly really quick .
+EXPECTED_RESPONSE : I started singing smelly cat from friends in my head when I thought of that .
+PROMPT : well , those are printed on pillows and these are actual women .
+EXPECTED_RESPONSE : both equally out of reach .
+PROMPT : is that my jersey ?
+EXPECTED_RESPONSE : hello , real cops ?
+PROMPT : pretty sure you just made it stronger for some people .
+EXPECTED_RESPONSE : what ' d he say ?
+PROMPT : I think the big one is going to make the smaller one its bitch .
+EXPECTED_RESPONSE : I think I ' m gonna make you my bitch .
+PROMPT : I too , have a fetish for hot chicks .
+EXPECTED_RESPONSE : yeah hot girls are definitely my type too .
+PROMPT : I think I ' m gonna make you my bitch .
+EXPECTED_RESPONSE : aww just want some love but looking in all the wrong places .
+PROMPT : what ' d he say ?
+EXPECTED_RESPONSE : pretend it ' s poop instead of a tail , fetish gone .

@@ -1,0 +1,21 @@
+# Javascript
+bower_components
+node_modules
+
+# Python
+*.pyc
+venv
+
+# Data
+data_dir
+train_dir
+log_dir
+data_dir2
+log_dir2
+train_dir2
+
+# Slack
+secret_slack
+
+# 
+.DS_Store
