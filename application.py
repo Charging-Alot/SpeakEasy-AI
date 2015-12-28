@@ -1,10 +1,8 @@
 from __future__ import print_function
 from __future__ import absolute_import
 
-
 import sys
-# import tensorflow as tf
-import boto3
+import os
 
 from flask import Flask, jsonify, make_response, request, abort 
 
@@ -28,4 +26,4 @@ def generate_response():
       return make_response(jsonify({'error': sys.exc_info()[0]}), 500)
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run(debug=False)
