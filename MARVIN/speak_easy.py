@@ -45,10 +45,10 @@ import tensorflow as tf
 import tensorflow.python.platform
 from tensorflow.python.platform import gfile
 
-import data_utils
-import seq2seq_model
-import chat_bot
-import slack
+import MARVIN.data_utils as data_utils
+import MARVIN.seq2seq_model as seq2seq_model
+import MARVIN.chat_bot as chat_bot
+import MARVIN.slack as slack
 
 
 # Training params

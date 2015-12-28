@@ -11,10 +11,10 @@ import numpy as np
 from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 
-from rnn import rnn_cell
-from rnn import seq2seq
+from MARVIN.rnn import rnn_cell
+from MARVIN.rnn import seq2seq
 
-import data_utils
+import MARVIN.data_utils as data_utils
 
 class Seq2SeqModel(object):
   def __init__(self, vocab_size, buckets_or_sentence_length, size,
