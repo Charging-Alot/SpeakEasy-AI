@@ -12,10 +12,10 @@ from flask import Flask, jsonify, make_response, request, abort
 
 # s3 = boto3.resource('s3')
 # Marvin = speak_easy.initialize_chatbot()   
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/marvin', methods=["POST"])
+@application.route('/marvin', methods=["POST"])
 def generateResponse():
     return make_response("WHEE", 200)
     # try:
@@ -27,4 +27,4 @@ def generateResponse():
     #   return make_response(jsonify({'error': sys.exc_info()[0]}), 500)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
