@@ -85,6 +85,9 @@ tf.app.flags.DEFINE_string("training_data", "FULL", "Data set used to train mode
 
 FLAGS = tf.app.flags.FLAGS
 
+data_dir = os.environ.get('data_dir', FLAGS.data_dir)
+restore_model = os.environ.get('restore_model', FLAGS.restore_model)
+
 # Only relevant if we are using a bucketed model
 _buckets = [(5, 10), (10, 15), (20, 25), (40, 50)]
 
@@ -153,9 +156,9 @@ def create_model(session, forward_only):
   
   ckpt = tf.train.get_checkpoint_state(FLAGS.train_dir)
 
-  if FLAGS.restore_model:
-    print("Reading model parameters from %s" % FLAGS.restore_model)
-    model.saver.restore(session, FLAGS.restore_model)
+  if restore_model:
+    print("Reading model parameters from %s" % restore_model)
+    model.saver.restore(session, restore_model)
   else:  
     if ckpt and gfile.Exists(ckpt.model_checkpoint_path):
       print("Reading model parameters from %s" % ckpt)
@@ -177,9 +180,9 @@ def train():
     text='Training SpeakEasy!',
   )
   # Prepare reddit data.
-  print("Preparing data in %s" % FLAGS.data_dir)
+  print("Preparing data in %s" % data_dir)
   sys.stdout.flush()
-  data_train, data_dev, _ = data_utils.prepare_data(FLAGS.data_dir, FLAGS.vocab_size)
+  data_train, data_dev, _ = data_utils.prepare_data(data_dir, FLAGS.vocab_size)
 
   with tf.Session() as sess:
     # Create model.
@@ -278,7 +281,7 @@ def initialize_chatbot():
   """Build interactive chatbot"""
   sess = tf.Session()
   model = create_model(sess, True)
-  vocab_path = os.path.join(FLAGS.data_dir, "vocab%d" % FLAGS.vocab_size)
+  vocab_path = os.path.join(data_dir, "vocab%d" % FLAGS.vocab_size)
   vocab, rev_vocab = data_utils.initialize_vocabulary(vocab_path)
   return chat_bot.ChatBot(vocab, rev_vocab, model, sess)
   

@@ -14,9 +14,12 @@ from flask import Flask, jsonify, make_response, request, abort
 # Marvin = speak_easy.initialize_chatbot()   
 application = Flask(__name__)
 
+@application.route('/', methods=["GET"])
+def root():
+    return make_response('fizzle bizzle', 200)
 
 @application.route('/marvin', methods=["POST"])
-def generateResponse():
+def generate_response():
     return make_response("WHEE", 200)
     # try:
     #   if not request.json or not 'prompt' in request.json:
