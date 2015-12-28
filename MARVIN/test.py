@@ -5,10 +5,7 @@ from __future__ import print_function
 import sys
 import tensorflow as tf
 
-
-import data_utils
 import speak_easy
-import chat_bot
 
 FLAGS = tf.app.flags.FLAGS
 
