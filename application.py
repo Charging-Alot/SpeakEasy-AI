@@ -9,6 +9,7 @@ from threading import Thread
 from flask import Flask, jsonify, make_response, request, abort 
 
 from MARVIN import speak_easy
+from MARVIN import parse
 
 application = Flask(__name__)
 
@@ -18,7 +19,6 @@ print("Loading SpeakEasy AI server")
 def initialize():
     global Marvin
     print("Considering loading Marvin")
-
     if not Marvin:
         print("Going to load Marvin")
         Marvin = speak_easy.initialize_chatbot()
@@ -38,6 +38,8 @@ def generate_response():
     try:
       if not request.json or not 'prompt' in request.json:
         abort(400)
+      parsed_prompt = parse.js_parse.call("parseText", request.json['prompt'])
+      print (parsed_prompt)
       response = Marvin.respond(request.json['prompt'])
       return make_response(jsonify({'response': response}), 200)
     except:

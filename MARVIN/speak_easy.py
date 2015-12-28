@@ -45,6 +45,12 @@ import tensorflow as tf
 import tensorflow.python.platform
 from tensorflow.python.platform import gfile
 
+
+# import data_utils
+# import seq2seq_model
+# import chat_bot
+# import slack
+
 import MARVIN.data_utils as data_utils
 import MARVIN.seq2seq_model as seq2seq_model
 import MARVIN.chat_bot as chat_bot
@@ -80,8 +86,6 @@ tf.app.flags.DEFINE_boolean("decode", False, "Set to True for interactive decodi
 tf.app.flags.DEFINE_boolean("self_test", False, "Set to True to run a self-test.")
 tf.app.flags.DEFINE_string("restore_model", "", "Path to model to restore.")
 tf.app.flags.DEFINE_string("training_data", "FULL", "Data set used to train model (for logging in test files).")
-
-# tf.app.flags.DEFINE_string("learning_pattern", ".99", "Learning pattern used to train model.")
 
 FLAGS = tf.app.flags.FLAGS
 

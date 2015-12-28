@@ -14,7 +14,11 @@ import tensorflow as tf
 from MARVIN.rnn import rnn_cell
 from MARVIN.rnn import seq2seq
 
+# from rnn import rnn_cell
+# from rnn import seq2seq
+
 import MARVIN.data_utils as data_utils
+# import data_utils
 
 class Seq2SeqModel(object):
   def __init__(self, vocab_size, buckets_or_sentence_length, size,

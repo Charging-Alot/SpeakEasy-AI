@@ -1,4 +1,5 @@
-import MARVIN.data_utils as data_utils
+# import MARVIN.data_utils as data_utils
+import data_utils
 import numpy as np
 
 class ChatBot(object):
