@@ -1,17 +1,34 @@
-# import MARVIN.data_utils as data_utils
-import data_utils
+"""ChatBot for interactive conversations"""
+import sys
+import os
+path = os.path.join(os.path.dirname(__file__), '..') 
+sys.path.append(path)
+
+import tensorflow as tf
 import numpy as np
 
-class ChatBot(object):
+from data import data_utils
+from model import model_utils
+from runtime_variables import params
 
-  def __init__(self, vocab, rev_vocab, model, session):
-    self.sess = session
-    self.vocab = vocab
-    self.rev_vocab = rev_vocab
-    self.model = model
+class ChatBot(object):
+  def __init__(self):
+  """Create the chatbot
+  Initializes a tensorflow session, initialzes vocabulary and builds a model with a batch size of 1 for decoding 1 sentence at a time.
+  """
+    self.sess = tf.Session()
+    vocab_path = os.path.join(params.data_dir, "vocab%d" % params.vocab_size)
+    self.vocab, self.rev_vocab = data_utils.initialize_vocabulary(vocab_path)
+    self.model = model_utils.create_model(self.sess, True)
     self.model.batch_size = 1 # Respond 1 sentence at a time.
 
   def respond(self, sentence):
+    """Talk with the chatbot!
+    Args:
+      sentence: Sentence to be used as prompt for the bot.  Assumes that sentence has already been parsed/cleaned (see parse.js and parse.py).
+    Return:
+      A string that represents the bot's response.  
+    """
         # Get token-ids for the input sentence.
     token_ids = data_utils.sentence_to_token_ids(sentence, self.vocab)
     try:

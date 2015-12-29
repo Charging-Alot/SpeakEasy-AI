@@ -1,24 +1,22 @@
-
 """Sequence-to-sequence model."""
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import random
+import sys
+import os
+path = os.path.join(os.path.dirname(__file__), '..') 
+sys.path.append(path)
 
 import numpy as np
 from six.moves import xrange  # pylint: disable=redefined-builtin
+import random
+
 import tensorflow as tf
+from tensorflow.models.rnn import rnn_cell
+from tensorflow.models.rnn import seq2seq
 
-from MARVIN.rnn import rnn_cell
-from MARVIN.rnn import seq2seq
-
-# from rnn import rnn_cell
-# from rnn import seq2seq
-
-import MARVIN.data_utils as data_utils
-# import data_utils
+from data import data_utils
 
 class Seq2SeqModel(object):
   def __init__(self, vocab_size, buckets_or_sentence_length, size,
@@ -26,29 +24,28 @@ class Seq2SeqModel(object):
                learning_rate_decay_factor, model_type, use_lstm=True,
                num_samples=512, forward_only=False):
     """Create the model.  This constructor can be used to created an embedded or embedded-attention, bucketed or non-bucketed model made of single or multi-layer RNN cells. 
-
     Args:
-      vocab_size: size of the vocabulary.
-      target_vocab_size: size of the target vocabulary.
+      vocab_size: Size of the vocabulary.
+      target_vocab_size: Size of the target vocabulary.
       buckets_or_sentence_length: 
-        if using buckets:
-          a list of pairs (I, O), where I specifies maximum input length
+        If using buckets:
+          A list of pairs (I, O), where I specifies maximum input length
           that will be processed in that bucket, and O specifies maximum output
           length. Training instances that have inputs longer than I or outputs
           longer than O will be pushed to the next bucket and padded accordingly.
           We assume that the list is sorted, e.g., [(2, 4), (8, 16)].
-        else:
-          number of the maximum number of words per sentence.
-      size: number of units in each layer of the model.
-      num_layers: number of layers in the model.
-      max_gradient_norm: gradients will be clipped to maximally this norm.
-      batch_size: the size of the batches used during training;
+        Else:
+          Number of the maximum number of words per sentence.
+      size: Number of units in each layer of the model.
+      num_layers: Number of layers in the model.
+      max_gradient_norm: Gradients will be clipped to maximally this norm.
+      batch_size: The size of the batches used during training;
         the model construction is independent of batch_size, so it can be
         changed after initialization if this is convenient, e.g., for decoding.
-      learning_rate: learning rate to start with.
-      learning_rate_decay_factor: decay learning rate by this much when needed.
-      num_samples: number of samples for sampled softmax.
-      forward_only: if set, we do not construct the backward pass in the model.
+      learning_rate: Learning rate to start with.
+      learning_rate_decay_factor: Decay learning rate by this much when needed.
+      num_samples: Number of samples for sampled softmax.
+      forward_only: If set, we do not construct the backward pass in the model.
     """
     # Need to determine if we're using buckets or not:
     if type(buckets_or_sentence_length) == list:
@@ -185,19 +182,16 @@ class Seq2SeqModel(object):
 
   def step(self, session, encoder_inputs, decoder_inputs, target_weights, forward_only, bucket_id=None):
     """Run a step of the model feeding the given inputs.
-
     Args:
-      session: tensorflow session to use.
-      encoder_inputs: list of numpy int vectors to feed as encoder inputs.
-      decoder_inputs: list of numpy int vectors to feed as decoder inputs.
-      target_weights: list of numpy float vectors to feed as target weights.
-      forward_only: whether to do the backward step or only forward.
-      bucket_id: which bucket of the model to use, if the model is bucketed.
-
+      session: Tensorflow session to use.
+      encoder_inputs: List of numpy int vectors to feed as encoder inputs.
+      decoder_inputs: List of numpy int vectors to feed as decoder inputs.
+      target_weights: List of numpy float vectors to feed as target weights.
+      forward_only: Whether to do the backward step or only forward.
+      bucket_id: Which bucket of the model to use, if the model is bucketed.
     Returns:
       A triple consisting of gradient norm (or None if we did not do backward),
       average perplexity, and the outputs.
-
     Raises:
       ValueError: if length of enconder_inputs, decoder_inputs, or
         target_weights disagrees with bucket size for the specified bucket_id.
@@ -268,19 +262,16 @@ class Seq2SeqModel(object):
 
   def get_batch(self, data, bucket_id=None):
     """Get a random batch of data from the specified bucket, prepare for step.
-
     To feed data in step(..) it must be a list of batch-major vectors, while
     data here contains single length-major cases. So the main logic of this
     function is to re-index data cases to be in the proper format for feeding.
-
     Args:
-      if using buckets:
-        data: a tuple of size len(self.buckets) in which each element contains
+      If using buckets:
+        data: A tuple of size len(self.buckets) in which each element contains
           lists of pairs of input and output data that we use to create a batch.
-        bucket_id: integer, which bucket to get the batch for.
-      else:
-        data: the entire training set      
-
+        bucket_id: Integer, which bucket to get the batch for.
+      Else:
+        data: The entire training set.      
     Returns:
       The triple (encoder_inputs, decoder_inputs, target_weights) for
       the constructed batch that has the proper format to call step(...) later.

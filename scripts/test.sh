@@ -10,7 +10,7 @@ function run_test_cases() {
   do
     if ! [ $f == 'test' ] && ! [ -e $1/test/${f:20} ]; then
       echo "Processing $f file..."
-      venv/bin/python MARVIN/test.py \
+      venv/bin/python test/test.py \
         --vocab_size=$vocab_size \
         --data_dir=$data_dir \
         --test_dir=$1/test \
