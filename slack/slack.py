@@ -1,13 +1,17 @@
+from __future__ import absolute_import
+
+import sys
+import os
+path = os.path.join(os.path.dirname(__file__), '..') 
+sys.path.append(path)
+
+from slack.secret_slack import secret
+
 try:
     from urllib.parse import urljoin
     from urllib.parse import urlencode
     import urllib.request as urlrequest
-except ImportError:
-    from urlparse import urljoin
-    from urllib import urlencode
-    import urllib2 as urlrequest
 import json
-# from secret_slack import secret_slack.secret as secret
 
 class Slack():
 
@@ -31,4 +35,4 @@ class Slack():
         response = self.opener.open(req, data.encode('utf-8')).read()
         return response.decode('utf-8')
 
-connection = Slack("https://hooks.slack.com/services/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")
+connection = Slack(secret)
