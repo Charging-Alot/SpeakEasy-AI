@@ -20,15 +20,11 @@ class Slack():
         self.opener = urlrequest.build_opener(urlrequest.HTTPHandler())
 
     def notify(self, **kwargs):
-        """
-        Send message to slack API
-        """
+        """Send message to slack API"""
         return self.send(kwargs)
 
     def send(self, payload):
-        """
-        Send payload to slack API
-        """
+        """Send payload to slack API"""
         payload_json = json.dumps(payload)
         data = urlencode({"payload": payload_json})
         req = urlrequest.Request(self.url)

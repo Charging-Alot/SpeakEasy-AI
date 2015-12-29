@@ -1,4 +1,4 @@
-"""Binary for training and testing SpeakEasy chatbot.
+"""Program for training and testing SpeakEasy chatbot.
 
 Bash script to run: scripts/run.sh
 
