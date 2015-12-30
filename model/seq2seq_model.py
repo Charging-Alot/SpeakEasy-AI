@@ -293,7 +293,8 @@ class Seq2SeqModel(object):
       # Encoder inputs are padded and then reversed.
       encoder_pad = [data_utils.PAD_ID] * (encoder_size - len(encoder_input))
       encoder_inputs.append(list(reversed(encoder_input + encoder_pad)))
-
+      print(encoder_inputs, "IN GET BATCH")
+      print(encoder_size, "ENCODER SIZE")
       # Decoder inputs get an extra "GO" symbol, and are padded then.
       decoder_pad_size = decoder_size - len(decoder_input) - 1
       decoder_inputs.append([data_utils.GO_ID] + decoder_input +
@@ -307,6 +308,7 @@ class Seq2SeqModel(object):
       batch_encoder_inputs.append(
           np.array([encoder_inputs[batch_idx][length_idx]
                     for batch_idx in xrange(self.batch_size)], dtype=np.int32))
+    print(batch_encoder_inputs)
 
     # Batch decoder inputs are re-indexed decoder_inputs, we create weights.
     for length_idx in xrange(decoder_size):

@@ -17,7 +17,7 @@ def self_test():
   with tf.Session() as sess:
     print("Self-test for neural translation model.")
     # Create model with vocabularies of 10, 2 small buckets, 2 layers of 32.
-    model = Seq2SeqModel(10, [(3, 3), (6, 6)], 32, 2, 5.0, 32, 0.3, 0.99, params.model_type, num_samples=8)
+    model = Seq2SeqModel(10, [(3, 3), (6, 6)], 32, 2, 5.0, 1, 0.3, 0.99, params.model_type, num_samples=8)
     sess.run(tf.initialize_all_variables())
     # Fake data set for both the (3, 3) and (6, 6) bucket.
     data_set = ([([1, 1], [2, 2]), ([3, 3], [4]), ([5], [6])], [([1, 1, 1, 1, 1], [2, 2, 2, 2, 2]), ([3, 3, 3], [5, 6])])
