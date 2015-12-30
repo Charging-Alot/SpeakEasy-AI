@@ -9,12 +9,16 @@ from __future__ import division
 from __future__ import print_function
 
 import sys
+import os
+path = os.path.join(os.path.dirname(__file__), '..') 
+sys.path.append(path)
+
 import tensorflow as tf
 
 from runtime_variables import params
-
+from model.chat_bot import ChatBot
 def test():
-  Marvin = speak_easy.initialize_chatbot()
+  Marvin = ChatBot()
   results = []
   results.append("MODEL_TYPE: %s\n" % params.model_type)
   results.append("MODEL_SIZE: %d\n" % params.size)
@@ -24,7 +28,7 @@ def test():
   results.append("TRAINING DATA: %s\n" % params.training_data)
   results.append("CHECKPOINT: %s\n" % params.restore_model.split('-')[-1])
 
-  with open('MARVIN/test_template', 'r') as template_file:
+  with open('test/test_template', 'r') as template_file:
     for line in template_file:
       results.append(line)
       if "PROMPT" in line:

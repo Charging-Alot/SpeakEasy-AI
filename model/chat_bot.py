@@ -13,9 +13,9 @@ from runtime_variables import params
 
 class ChatBot(object):
   def __init__(self):
-  """Create the chatbot
-  Initializes a tensorflow session, initialzes vocabulary and builds a model with a batch size of 1 for decoding 1 sentence at a time.
-  """
+    """Create the chatbot
+    Initializes a tensorflow session, initialzes vocabulary and builds a model with a batch size of 1 for decoding 1 sentence at a time.
+    """
     self.sess = tf.Session()
     vocab_path = os.path.join(params.data_dir, "vocab%d" % params.vocab_size)
     self.vocab, self.rev_vocab = data_utils.initialize_vocabulary(vocab_path)

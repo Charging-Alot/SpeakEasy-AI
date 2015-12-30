@@ -24,3 +24,6 @@ secret_slack
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+#AWS
+keys
