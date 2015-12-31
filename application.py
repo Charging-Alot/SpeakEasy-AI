@@ -56,7 +56,7 @@ def generate_response():
       abort(400)
     parsed_prompt = parse.js_parse.call("parseText", request.json['prompt'])
     print (parsed_prompt)
-    response = Marvin.respond(request.json['prompt'])
+    response = Marvin.respond(parsed_prompt)
     return make_response(jsonify({'response': response}), 200)
   except:
     return make_response(jsonify({'error': sys.exc_info()[0]}), 500)
