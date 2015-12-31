@@ -13,6 +13,7 @@ import random
 
 import tensorflow as tf
 from flask import Flask, jsonify, make_response, request, abort 
+import json
 
 from data import data_utils
 from model.train import read_data
@@ -97,7 +98,13 @@ def embed():
   print(embedded_encoders)
   print(embedded_encoders[0])
   
-  
+  print(encoder)
+  print(type(json.dumps(encoder)), "UGH")
+  with open('/Users/lauragelston/Desktop/encoder', 'w') as encoder_file:
+    encoder_file.write(json.dumps(encoder))
+  with open('/Users/lauragelston/Desktop/decoder', 'w') as decoder_file:
+    decoder_file.write(json.dumps(decoder))
+  # test_file.close()
   return make_response(jsonify({'encoder': encoder, 'decoder' : decoder}), 200)
   
 if __name__ == '__main__':
