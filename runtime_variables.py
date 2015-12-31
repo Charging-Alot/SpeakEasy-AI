@@ -39,6 +39,8 @@ tf.app.flags.DEFINE_boolean("self_test", False, "Set to True to run a self-test.
 tf.app.flags.DEFINE_string("restore_model", "", "Path to model to restore.")
 tf.app.flags.DEFINE_string("training_data", "FULL", "Data set used to train model (for logging in test files).")
 
+tf.app.flags.DEFINE_integer("readline", 0, "Line to start reading for embedding.")
+
 params = tf.app.flags.FLAGS
 params.data_dir = os.environ.get('data_dir', params.data_dir)
 params.restore_model = os.environ.get('restore_model', params.restore_model)
