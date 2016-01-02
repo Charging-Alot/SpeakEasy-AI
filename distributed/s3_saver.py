@@ -11,6 +11,7 @@ from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 import shutil
 import boto3
+import json
 s3 = boto3.resource('s3')
 
 from runtime_variables import params
@@ -43,10 +44,13 @@ def save_variables():
   with tf.Session() as sess:
     model = create_model(sess, True)
     model_params = sess.run(tf.all_variables())
-    for i in xrange(2,len(VARIABLES)):
-      print(VARIABLES[i])
-      np.savetxt(SAVE_DIR + VARIABLES[i], model_params[i])
-      upload_variable(VARIABLES[i])
+    for i in xrange(5,len(VARIABLES)):
+      if "decoder_embedding" not in VARIABLES[i]:
+        print(VARIABLES[i])
+        to_save = model_params[i].tolist()
+        with open(SAVE_DIR + VARIABLES[i], 'w') as test_file:
+          test_file.write(json.dumps(to_save))
+        upload_variable(VARIABLES[i])
 
 
 def upload_variable(variable):

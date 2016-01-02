@@ -15,7 +15,7 @@ log_dir2
 train_dir2
 
 # Slack
-secret_slack
+slack/secret_slack.py
 
 # 
 .DS_Store
@@ -26,4 +26,4 @@ secret_slack
 !.elasticbeanstalk/*.global.yml
 
 #AWS
-keys
+distributed/awsConfig.js

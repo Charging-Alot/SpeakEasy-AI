@@ -12,7 +12,5 @@ PyExecJS==1.1.0
 python-dateutil==2.4.2
 requests==2.8.1
 six==1.10.0
-slacker==0.8.6
-tensorflow==0.5.0
 Werkzeug==0.11.3
 wheel==0.24.0
