@@ -34,7 +34,6 @@ def basic_tokenizer(sentence):
   words = []
   for space_separated_fragment in sentence.strip().split():
     words.extend(re.split(_WORD_SPLIT, space_separated_fragment))
-  print(words, "WORDS")
   return [w for w in words if w]
 
 
@@ -124,14 +123,12 @@ def sentence_to_token_ids(sentence, vocabulary,
     words = tokenizer(sentence)
   else:
     words = basic_tokenizer(sentence)
-    print(words, "TO USE")
   if words == 'breakHerePlease':
     return [words]
   if not normalize_digits:
     print([vocabulary.get(w, UNK_ID) for w in words])
     return [vocabulary.get(w, UNK_ID) for w in words]
   # Normalize digits by 0 before looking words up in the vocabulary.
-  print([vocabulary.get(re.sub(_DIGIT_RE, "0", w), UNK_ID) for w in words], "IDs")
   return [vocabulary.get(re.sub(_DIGIT_RE, "0", w), UNK_ID) for w in words]
 
 
