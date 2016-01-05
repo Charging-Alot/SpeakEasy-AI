@@ -10,6 +10,8 @@ path = os.path.join(os.path.dirname(__file__), '..')
 sys.path.append(path)
 
 import numpy as np
+import time
+import math
 from six.moves import xrange 
 
 import tensorflow as tf
@@ -73,6 +75,9 @@ def train():
   sys.stdout.flush()
   data_train, data_dev, _ = data_utils.prepare_data(params.data_dir, params.vocab_size)
 
+  # config = tf.ConfigProto()
+  # config.gpu_options.allocator_type = 'BFC'
+  # with tf.Session(config=config) as sess:
   with tf.Session() as sess:
     # Create model.
     print("Creating %s model with %d layers of %d units." % (params.model_type, params.num_layers, params.size))

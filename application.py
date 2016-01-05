@@ -24,11 +24,13 @@ import time
 from threading import Thread
 
 from flask import Flask, jsonify, make_response, request, abort 
+from flask.ext.cors import CORS
 
 from model.chat_bot import ChatBot
 from data import parse
 
 application = Flask(__name__)
+CORS(application)
 
 Marvin = None
 print("Loading SpeakEasy AI server")
@@ -52,6 +54,7 @@ def generate_response():
     return
 
   try:
+    print(request.json)
     if not request.json or not 'prompt' in request.json:
       abort(400)
     parsed_prompt = parse.js_parse.call("parseText", request.json['prompt'])
