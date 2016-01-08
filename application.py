@@ -31,7 +31,6 @@ from data import parse
 
 application = Flask(__name__)
 CORS(application)
-
 Marvin = None
 print("Loading SpeakEasy AI server")
 
@@ -42,27 +41,30 @@ def initialize():
     Marvin = ChatBot()
     print("Marvin is loaded")
 
+
 @application.route('/', methods=["GET"])
 def root():
   return make_response('fizzle bizzle %s' % time.time(), 200)
 
 @application.route('/marvin', methods=["POST"])
 def generate_response():
+  print("HERE")
   if not Marvin:
     print("Marvin is not ready yet")
     abort(418)
     return
-
   try:
-    print(request.json)
     if not request.json or not 'prompt' in request.json:
+      print("abort?")
       abort(400)
     parsed_prompt = parse.js_parse.call("parseText", request.json['prompt'])
     print (parsed_prompt)
     response = Marvin.respond(parsed_prompt)
     return make_response(jsonify({'response': response}), 200)
   except:
+    print(sys.exc_info()[0])
     return make_response(jsonify({'error': sys.exc_info()[0]}), 500)
+
 
 if __name__ == '__main__':
   initialize()

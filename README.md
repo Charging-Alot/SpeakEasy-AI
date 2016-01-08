@@ -25,42 +25,42 @@ Running with --decode starts an interactive loop that allows you to interact wit
 
 Several model parameters can be customized using flags.  All flag arguments are optional since reasonable default values are provided in runtime_vaiables.py (except --data_dir, whose default needs to be overwritten to point to a data-containing directory):
 
-  Training parmeters:
-  |Flag|Description|
-  |:---:|:---:|
-  |--learning_rate LEARNING_RATE                          |Learning rate.                         |
-  |--learning_rate_decay_factor LEARNING_RATE_DECAY_FACTOR|Learning rate decays by this much.     |
-  |--max_gradient_norm MAX_GRADIENT_NORM                  |Clip gradients to this norm.           |
-  |--steps_per_checkpoint STEPS_PER_CHECKPOINT      |How many training steps to do per checkpoint.|
+Training parmeters:
+|Flag|Description|
+|:---:|:---:|
+|--learning_rate LEARNING_RATE                          |Learning rate.                         |
+|--learning_rate_decay_factor LEARNING_RATE_DECAY_FACTOR|Learning rate decays by this much.     |
+|--max_gradient_norm MAX_GRADIENT_NORM                  |Clip gradients to this norm.           |
+|--steps_per_checkpoint STEPS_PER_CHECKPOINT      |How many training steps to do per checkpoint.|
 
-  Model architecture:
-  |Flag|Description|
-  |:---:|:---:|
-  |--batch_size BATCH_SIZE                                |Batch size to use during training.     |
-  |--size SIZE                                            |Size of each model layer.              |
-  |--num_layers NUM_LAYERS                                |Number of layers in the model.         |
-  |--vocab_size VOCAB_SIZE                                |Vocabulary size.                       |
-  |--model_type MODEL_TYPE               |Seq2Seq model type: 'embedding_attention' or 'embedding'|
-  |--buckets BUCKETS                                      |Implement the model with buckets       |
-  |--nobuckets                                            |
-  |--max_sentence_length  MAX_SENTENCE_LENGTH   |Maximum sentence length for model WITHOUT buckets|
+Model architecture:
+|Flag|Description|
+|:---:|:---:|
+|--batch_size BATCH_SIZE                                |Batch size to use during training.     |
+|--size SIZE                                            |Size of each model layer.              |
+|--num_layers NUM_LAYERS                                |Number of layers in the model.         |
+|--vocab_size VOCAB_SIZE                                |Vocabulary size.                       |
+|--model_type MODEL_TYPE               |Seq2Seq model type: 'embedding_attention' or 'embedding'|
+|--buckets BUCKETS                                      |Implement the model with buckets       |
+|--nobuckets                                            |
+|--max_sentence_length  MAX_SENTENCE_LENGTH   |Maximum sentence length for model WITHOUT buckets|
 
-  Data parameters:
-  |Flag|Description|
-  |:---:|:---:|
-  |--max_train_data_size MAX_TRAIN_DATA_SIZE    |Limit on the size of training data (0: no limit).|
+Data parameters:
+|Flag|Description|
+|:---:|:---:|
+|--max_train_data_size MAX_TRAIN_DATA_SIZE    |Limit on the size of training data (0: no limit).|
   
-  Directories:
-  |Flag|Description|
-  |:---:|:---:|
-  |--data_dir DATA_DIR                                    |Data directory.                        |
-  |--train_dir TRAIN_DIR                                  |Training directory.                    |
-  |--log_dir LOG_DIR                                      |Logging directory.                     |
+Directories:
+|Flag|Description|
+|:---:|:---:|
+|--data_dir DATA_DIR                                    |Data directory.                        |
+|--train_dir TRAIN_DIR                                  |Training directory.                    |
+|--log_dir LOG_DIR                                      |Logging directory.                     |
   
-  Testing:
-  |Flag|Description|
-  |:---:|:---:|
-  |--decode DECODE                                        |Set to True for interactive decoding.  |
-  |--nodecode                                             |                                       |
-  |--self_test SELF_TEST                                  |Set to True to run a self-test.        |
-  |--restore_model                                        |Path to model to restore.              |
+Testing:
+|Flag|Description|
+|:---:|:---:|
+|--decode DECODE                                        |Set to True for interactive decoding.  |
+|--nodecode                                             |                                       |
+|--self_test SELF_TEST                                  |Set to True to run a self-test.        |
+|--restore_model                                        |Path to model to restore.              |
