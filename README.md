@@ -25,7 +25,7 @@ Running with --decode starts an interactive loop that allows you to interact wit
 
 Several model parameters can be customized using flags.  All flag arguments are optional since reasonable default values are provided in runtime_vaiables.py (except --data_dir, whose default needs to be overwritten to point to a data-containing directory):
 
-Training parmeters:
+#####Training parmeters:
 |Flag|Description|
 |:---:|:---:|
 |--learning_rate LEARNING_RATE                          |Learning rate.                         |
@@ -33,7 +33,7 @@ Training parmeters:
 |--max_gradient_norm MAX_GRADIENT_NORM                  |Clip gradients to this norm.           |
 |--steps_per_checkpoint STEPS_PER_CHECKPOINT      |How many training steps to do per checkpoint.|
 
-Model architecture:
+#####Model architecture:
 |Flag|Description|
 |:---:|:---:|
 |--batch_size BATCH_SIZE                                |Batch size to use during training.     |
@@ -45,19 +45,19 @@ Model architecture:
 |--nobuckets                                            |
 |--max_sentence_length  MAX_SENTENCE_LENGTH   |Maximum sentence length for model WITHOUT buckets|
 
-Data parameters:
+#####Data parameters:
 |Flag|Description|
 |:---:|:---:|
 |--max_train_data_size MAX_TRAIN_DATA_SIZE    |Limit on the size of training data (0: no limit).|
   
-Directories:
+#####Directories:
 |Flag|Description|
 |:---:|:---:|
 |--data_dir DATA_DIR                                    |Data directory.                        |
 |--train_dir TRAIN_DIR                                  |Training directory.                    |
 |--log_dir LOG_DIR                                      |Logging directory.                     |
   
-Testing:
+#####Testing:
 |Flag|Description|
 |:---:|:---:|
 |--decode DECODE                                        |Set to True for interactive decoding.  |
